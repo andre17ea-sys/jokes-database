@@ -41,8 +41,14 @@ app.post("/jokes", async (req, res) => {
   res.json({ status: `Joke inserted successfully into database` }); //confirm.
 });
 
-app.listen(8080, () => {
-  console.log("Server started on http://localhost:8080");
+//app.listen(8080, () => {
+//console.log("Server started on http://localhost:8080");
+//});
+
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+  console.log(`Server started on http://localhost:${PORT}`);
 });
 
 // from 32: aparent pot scrie in 2 moduri-cel de jos e din clasa:
