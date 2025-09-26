@@ -1,0 +1,61 @@
+form {
+  max-width: 400px;
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid #1d060650;
+  border-radius: 8px;
+  background-color: #4a48694b;
+  box-shadow: 0 2px 5px rgba(128, 57, 10, 0.445);
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #052516;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: #021a35;
+}
+
+button {
+  background-color: #537eac9c;
+}
+
+.joke-box {
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px auto;
+  max-width: 600px;
+  background-color: #a4c7e679;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 2px 2px 8px rgba(18, 163, 37, 0.89);
+}
+
+.joke-box p {
+  margin: 0;
+  width: 48%;
+}
+
+.joke-box p:first-child {
+  font-weight: bold;
+  text-align: left;
+}
+
+.joke-box p:last-child {
+  font-style: italic;
+  font-weight: bold;
+  color: #0baf3c;
+  text-align: right;
+}
