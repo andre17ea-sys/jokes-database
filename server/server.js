@@ -29,16 +29,18 @@ app.get("/jokes", async (req, res) => {
 });
 
 // POST adaug o gluma noua in database / make a post route to allow people to make new jokes
+// When the client sends up infromation it is always in the request.body
 app.post("/jokes", async (req, res) => {
-  // When the client sends up infromation it is always in the request.body
-  const { joke, punchline } = req.body; //iau datele from req
-
-  await db.query(`INSERT INTO jokes (joke, punchline) VALUES ($1, $2)`, [
-    joke,
-    punchline,
-  ]);
-
-  res.json({ status: `Joke inserted successfully into database` }); //confirm.
+  const { joke, punchline } = req.body;
+  try {
+    await db.query(`INSERT INTO jokes (joke, punchline) VALUES ($1, $2)`, [
+      joke,
+      punchline,
+    ]);
+    res.json({ status: `Joke inserted successfully into database` });
+  } catch (error) {
+    res.status(500).json({ error: "Database error" });
+  }
 });
 
 //app.listen(8080, () => {
@@ -48,7 +50,7 @@ app.post("/jokes", async (req, res) => {
 const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
-  console.log(`Server started on http://localhost:${PORT}`);
+  console.log(`Server started on port ${PORT}`);
 });
 
 // from 32: aparent pot scrie in 2 moduri-cel de jos e din clasa:
