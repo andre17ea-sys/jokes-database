@@ -1,8 +1,11 @@
 // selectez <body> ca să pot adăuga acolo glumele
 const body = document.querySelector("body");
 
-// GET către serverul meu Express (care rulează pe portul 8080)
-fetch("http://localhost:8080/jokes")
+// URL-ul serverului Express live pe Render
+const baseUrl = "https://jokes-database-server.onrender.com";
+
+// GET către serverul meu Express
+fetch(`${baseUrl}/jokes`)
   .then((res) => res.json()) // convertim răspunsul în JSON
   .then((data) => {
     console.log("From server:", data);
@@ -22,7 +25,7 @@ fetch("http://localhost:8080/jokes")
       // creez un paragraf pentru gluma propriu-zisă
       const jokeP = document.createElement("p");
       jokeP.textContent = joke.joke;
-      jokeP.style.fontWeight = "bold"; // optional, să iasă în evidență gluma
+      jokeP.style.fontWeight = "bold"; // să iasă în evidență gluma
 
       // creez un paragraf pentru punchline
       const punchlineP = document.createElement("p");
@@ -52,7 +55,7 @@ form.addEventListener("submit", async (event) => {
   const punchline = document.getElementById("punchline").value;
 
   // trimit datele către server printr-un POST request
-  const res = await fetch("http://localhost:8080/jokes", {
+  const res = await fetch(`${baseUrl}/jokes`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json", // spun serverului că trimit JSON
